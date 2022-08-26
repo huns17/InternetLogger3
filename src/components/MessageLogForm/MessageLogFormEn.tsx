@@ -12,6 +12,7 @@ const MessageLogFormEn = () => {
   >([]);
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isbuttonPressed, setIsbuttonPressed] = useState<boolean>(false);
   let navigate = useNavigate();
 
   const fetchNoteHandlerEn = useCallback(async () => {
@@ -93,12 +94,25 @@ const MessageLogFormEn = () => {
       <section>
         <h3 style={{ color: "white" }}>Welcome..! {reduxUser} </h3>
         <button onClick={fetchNoteHandlerEn}>Update Notes</button>
+        <button
+          onClick={() => {
+            setIsbuttonPressed(true);
+          }}
+          style={{ marginLeft: "20px" }}
+        >
+          Write Log
+        </button>
       </section>
-      <section>
-        <h3 style={{ color: "white" }}>Log Format</h3>
-        <AddNoteEn AddNote={addNoteHandlerEn} logger={reduxUser}></AddNoteEn>
-      </section>
-
+      {isbuttonPressed && (
+        <section>
+          <h3 style={{ color: "white" }}>Log Format</h3>
+          <AddNoteEn
+            AddNote={addNoteHandlerEn}
+            logger={reduxUser}
+            setIsbuttonPressed={setIsbuttonPressed}
+          ></AddNoteEn>
+        </section>
+      )}
       <section>
         <h3 style={{ color: "white" }}>Log</h3>
         {content}

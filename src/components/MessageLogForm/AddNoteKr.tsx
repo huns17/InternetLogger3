@@ -12,6 +12,7 @@ type AddNoteKRProps = {
   }) => void;
 
   logger: string;
+  setIsbuttonPressed: (boolean: boolean) => void;
 };
 
 function AddNoteKr(props: AddNoteKRProps) {
@@ -19,6 +20,7 @@ function AddNoteKr(props: AddNoteKRProps) {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const now = new Date();
   const reduxUserInfo = useAppSelector((state) => state.user);
+
   function submitHandler(event: React.FormEvent) {
     event.preventDefault();
     const notes = {
@@ -30,6 +32,7 @@ function AddNoteKr(props: AddNoteKRProps) {
 
     console.log(notes);
     props.AddNote(notes);
+    props.setIsbuttonPressed(false);
     titleRef.current!.value = "";
     textRef.current!.value = "";
   }

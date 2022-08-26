@@ -76,7 +76,7 @@ const DialogEquipment = ({ open, close }: DialogEquipmentProps) => {
             {isBluePressed && (
               <Grid item xs={12} sm={12}>
                 <Box
-                  sx={{ width: "550px", height: "600px" }}
+                  sx={{ width: "400px", height: "600px" }}
                   component="img"
                   src="image/sarah.jpeg"
                 ></Box>

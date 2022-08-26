@@ -13,6 +13,7 @@ type AddNoteENProps = {
   }) => void;
 
   logger: string;
+  setIsbuttonPressed: (boolean: boolean) => void;
 };
 
 function AddNoteEn(props: AddNoteENProps) {
@@ -31,6 +32,7 @@ function AddNoteEn(props: AddNoteENProps) {
     };
 
     props.AddNote(notes);
+    props.setIsbuttonPressed(false);
     titleRef.current!.value = "";
     textRef.current!.value = "";
   }
