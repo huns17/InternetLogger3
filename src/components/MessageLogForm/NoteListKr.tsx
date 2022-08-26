@@ -4,16 +4,18 @@ import "./NoteList.css";
 
 const NoteListKr = (props: { note: any[] }) => {
   return (
-    <ul className="note-list">
-      {props.note.map((note) => (
-        <Note
-          key={note.id}
-          title={note.title}
-          date={note.date}
-          text={note.text}
-        />
-      ))}
-    </ul>
+    <div style={{ overflowY: "scroll", height: 400 }}>
+      <ul className="note-list">
+        {props.note.map((note) => (
+          <Note
+            key={note.id}
+            title={note.title}
+            date={note.date}
+            text={note.text}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

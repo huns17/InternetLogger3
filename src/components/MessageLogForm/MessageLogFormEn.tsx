@@ -92,14 +92,13 @@ const MessageLogFormEn = () => {
     <div>
       <section>
         <h3 style={{ color: "white" }}>Welcome..! {reduxUser} </h3>
+        <button onClick={fetchNoteHandlerEn}>Update Notes</button>
       </section>
       <section>
         <h3 style={{ color: "white" }}>Log Format</h3>
         <AddNoteEn AddNote={addNoteHandlerEn} logger={reduxUser}></AddNoteEn>
       </section>
-      <section>
-        <button onClick={fetchNoteHandlerEn}>Update Notes</button>
-      </section>
+
       <section>
         <h3 style={{ color: "white" }}>Log</h3>
         {content}

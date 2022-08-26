@@ -91,13 +91,11 @@ const MessageLogFormKr = () => {
     <div>
       <section>
         <h3 style={{ color: "white" }}>반갑습니다.. {reduxUser}님.... </h3>
+        <button onClick={fetchNoteHandlerKr}>메세지 업데이트</button>
       </section>
       <section>
         <h3 style={{ color: "white" }}>메세지 양식</h3>
         <AddNoteKr AddNote={addNoteHandlerKr} logger={reduxUser}></AddNoteKr>
-      </section>
-      <section>
-        <button onClick={fetchNoteHandlerKr}>메세지 업데이트</button>
       </section>
       <section>
         <h3 style={{ color: "white" }}>메세지 로그</h3>

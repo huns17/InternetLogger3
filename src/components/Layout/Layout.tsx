@@ -84,9 +84,15 @@ const Layout = (props: { children: React.ReactFragment }) => {
 
   console.log(reduxUser);
   return (
-    <>
+    <div>
       <MainNavigation />
-      <Box sx={{ height: 330, transform: "translateZ(0px)", flexGrow: 1 }}>
+      <Box
+        sx={{
+          height: 330,
+          transform: "translateZ(0px)",
+          flexGrow: 1,
+        }}
+      >
         <main>{props.children}</main>
         <SpeedDial
           ariaLabel="SpeedDial tooltip example"
@@ -144,7 +150,7 @@ const Layout = (props: { children: React.ReactFragment }) => {
         </SpeedDial>
       </Box>
       <DialogUndoingBox open={openBox} close={dialogCloseHandler} />
-    </>
+    </div>
   );
 };
 
