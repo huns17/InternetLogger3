@@ -92,7 +92,7 @@ const Layout = (props: { children: React.ReactFragment }) => {
           ariaLabel="SpeedDial tooltip example"
           sx={{
             position: "absolute",
-            bottom: -380,
+            bottom: -300,
             right: 40,
           }}
           icon={<SpeedDialIcon />}
