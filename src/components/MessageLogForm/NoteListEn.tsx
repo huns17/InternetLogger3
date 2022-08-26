@@ -4,7 +4,7 @@ import "./NoteList.css";
 
 const NoteListEn = (props: { note: any[] }) => {
   return (
-    <div style={{ overflowY: "scroll", height: 650 }}>
+    <div style={{ overflowY: "scroll", height: 400 }}>
       <ul className="note-list">
         {props.note.map((note) => (
           <Note
