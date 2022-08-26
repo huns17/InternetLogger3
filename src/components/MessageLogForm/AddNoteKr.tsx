@@ -22,19 +22,26 @@ function AddNoteKr(props: AddNoteKRProps) {
   const reduxUserInfo = useAppSelector((state) => state.user);
 
   function submitHandler(event: React.FormEvent) {
-    event.preventDefault();
-    const notes = {
-      title: titleRef.current?.value,
-      text: textRef.current?.value,
-      date: now.toLocaleString(),
-      logger: reduxUserInfo,
-    };
+    let temp = titleRef.current?.value;
+    let temp2 = textRef.current?.value;
+    if (temp && temp2) {
+      event.preventDefault();
+      const notes = {
+        title: titleRef.current?.value,
+        text: textRef.current?.value,
+        date: now.toLocaleString(),
+        logger: reduxUserInfo,
+      };
 
-    console.log(notes);
-    props.AddNote(notes);
-    props.setIsbuttonPressed(false);
-    titleRef.current!.value = "";
-    textRef.current!.value = "";
+      console.log(notes);
+      props.AddNote(notes);
+      props.setIsbuttonPressed(false);
+      titleRef.current!.value = "";
+      textRef.current!.value = "";
+    } else {
+      alert("제목과 내용을 모두 입력해주세요.");
+    }
+    console.log({ temp, temp2 });
   }
 
   return (

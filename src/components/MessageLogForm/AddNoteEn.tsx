@@ -20,21 +20,25 @@ function AddNoteEn(props: AddNoteENProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const textRef = useRef<HTMLTextAreaElement>(null);
   const now = new Date();
-
   const reduxUserInfo = useAppSelector((state) => state.user);
-  function submitHandler(event: React.FormEvent) {
-    event.preventDefault();
-    const notes = {
-      title: titleRef.current?.value,
-      text: textRef.current?.value,
-      date: now.toLocaleString(),
-      logger: reduxUserInfo,
-    };
 
-    props.AddNote(notes);
-    props.setIsbuttonPressed(false);
-    titleRef.current!.value = "";
-    textRef.current!.value = "";
+  function submitHandler(event: React.FormEvent) {
+    if (titleRef.current?.value && textRef.current?.value) {
+      event.preventDefault();
+      const notes = {
+        title: titleRef.current?.value,
+        text: textRef.current?.value,
+        date: now.toLocaleString(),
+        logger: reduxUserInfo,
+      };
+
+      props.AddNote(notes);
+      props.setIsbuttonPressed(false);
+      titleRef.current!.value = "";
+      textRef.current!.value = "";
+    } else {
+      alert("Please input required fields.");
+    }
   }
 
   return (
