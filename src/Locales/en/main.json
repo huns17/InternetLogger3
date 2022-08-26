@@ -1,0 +1,19 @@
+{
+  "Loginform.header": "Input the password to access the Message Log.",
+  "Loginform.input-email": "Email",
+  "Loginform.input-pd": "Password",
+  "Loginform.button-submit": "Log In",
+  "Loginform.formHandler.alert": "You are not authorized to use this service.",
+  "SignInForm.formHandler.alert": "Successfully Sign In.",
+  "SignInForm.header": "Input Email and Password to sign in.",
+  "SignInForm.header2": "Password should be more than 7 digits.",
+  "SignInForm.button-submit": "Submit",
+  "Layout.iconText-login": "LogIn",
+  "Layout.iconText-logout": "LogOut",
+  "Layout.iconText-signin": "SingIn",
+  "Layout.iconText-changepw": "Change Password",
+  "ChangePasswordForm.formHandler-header": "Input the password that you want to change.",
+  "ChangePasswordForm.formHandler-alert": "Failed to change password. Password Should be more than 7 digits.",
+  "ChangePasswordForm.formHandler-alert2": "Succeded to change the password.",
+  "InitialPage.header": "Select Menu To Start Application."
+}

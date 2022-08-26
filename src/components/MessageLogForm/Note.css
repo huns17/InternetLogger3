@@ -1,0 +1,26 @@
+.note {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+}
+
+.note h3 {
+  color: #9adcff;
+}
+
+.note h6 {
+  color: #b5fe83;
+}
+.note p {
+  color: white;
+  margin: 0;
+  font-size: 1rem;
+}
+.note button {
+  margin: 10 20;
+}
