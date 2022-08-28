@@ -14,6 +14,7 @@ import InitialPage from "./pages/InitialPage";
 // import { useSelector, useDispatch } from "react-redux";
 import { useAppSelector, useAppDispatch } from "./store/hooks";
 import { usersActions } from "./store/userSlice";
+import { CssBaseline } from "@material-ui/core";
 
 function App() {
   const reduxIsLoggedIn: boolean = useAppSelector((state) => state.isLoggedIn);
@@ -30,7 +31,7 @@ function App() {
       dispatch(usersActions.updateUser(storedUser));
       dispatch(usersActions.updateIsLoggedIn(storedIsLoggedIn));
     }
-  }, [storedToken, storedIsLoggedIn, storedUser]);
+  }, [storedToken, storedIsLoggedIn, storedUser, dispatch]);
 
   const isMsgEn = () => {
     if (
@@ -57,46 +58,51 @@ function App() {
   };
 
   return (
-    <Layout>
-      <Routes>
-        {reduxIsLoggedIn ? (
-          <Route path="*" element={<Navigate to="/initialpage" />} />
-        ) : (
-          <Route path="*" element={<Navigate to="/login" />} />
-        )}
-        {!reduxIsLoggedIn && <Route path="/login" element={<Login></Login>} />}
-        {reduxIsLoggedIn && (
-          <Route path="/initialpage" element={<InitialPage></InitialPage>} />
-        )}
-        {!reduxIsLoggedIn && (
-          <Route path="/signin" element={<SignIn></SignIn>} />
-        )}
-        {isMsgEn() && (
-          <Route path="/msglogen" element={<MessageLogEn></MessageLogEn>} />
-        )}
-        {isMsgKr() && (
-          <Route path="/msglogkr" element={<MessageLogKr></MessageLogKr>} />
-        )}
-        {isMsgEn() && (
-          <Route path="/hompageen" element={<HomePageEn></HomePageEn>} />
-        )}
-        {isMsgKr() && (
-          <Route path="/hompagekr" element={<HomePageKr></HomePageKr>} />
-        )}
-        {reduxIsLoggedIn && (
-          <Route
-            path="/updateusername"
-            element={<ChangeUserName></ChangeUserName>}
-          />
-        )}
-        {reduxIsLoggedIn && (
-          <Route
-            path="/changepassword"
-            element={<ChangePassword></ChangePassword>}
-          />
-        )}
-      </Routes>
-    </Layout>
+    <>
+      <CssBaseline />
+      <Layout>
+        <Routes>
+          {reduxIsLoggedIn ? (
+            <Route path="*" element={<Navigate to="/initialpage" />} />
+          ) : (
+            <Route path="*" element={<Navigate to="/login" />} />
+          )}
+          {!reduxIsLoggedIn && (
+            <Route path="/login" element={<Login></Login>} />
+          )}
+          {reduxIsLoggedIn && (
+            <Route path="/initialpage" element={<InitialPage></InitialPage>} />
+          )}
+          {!reduxIsLoggedIn && (
+            <Route path="/signin" element={<SignIn></SignIn>} />
+          )}
+          {isMsgEn() && (
+            <Route path="/msglogen" element={<MessageLogEn></MessageLogEn>} />
+          )}
+          {isMsgKr() && (
+            <Route path="/msglogkr" element={<MessageLogKr></MessageLogKr>} />
+          )}
+          {isMsgEn() && (
+            <Route path="/hompageen" element={<HomePageEn></HomePageEn>} />
+          )}
+          {isMsgKr() && (
+            <Route path="/hompagekr" element={<HomePageKr></HomePageKr>} />
+          )}
+          {reduxIsLoggedIn && (
+            <Route
+              path="/updateusername"
+              element={<ChangeUserName></ChangeUserName>}
+            />
+          )}
+          {reduxIsLoggedIn && (
+            <Route
+              path="/changepassword"
+              element={<ChangePassword></ChangePassword>}
+            />
+          )}
+        </Routes>
+      </Layout>
+    </>
   );
 }
 

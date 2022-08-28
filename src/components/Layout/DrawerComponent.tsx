@@ -27,7 +27,7 @@ const DrawerComponent = ({
 
   useEffect(() => {
     dispatch(usersActions.updateLanguage(storedLan));
-  }, [storedLan]);
+  }, [storedLan, dispatch]);
 
   const logoutHandler = () => {
     dispatch(usersActions.updateIdToken(""));
@@ -37,6 +37,7 @@ const DrawerComponent = ({
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("user");
     navigate("/login");
+    return "123";
   };
 
   return (

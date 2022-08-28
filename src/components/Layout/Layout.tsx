@@ -36,6 +36,15 @@ const Layout = (props: { children: React.ReactFragment }) => {
     setOpenBox(false);
   };
 
+  const style: React.CSSProperties = {
+    margin: 0,
+    top: "auto",
+    right: 20,
+    bottom: 20,
+    left: "auto",
+    position: "fixed",
+  };
+
   const actions = [
     reduxIsLoggedIn
       ? { icon: <LogoutIcon />, name: t(`Layout.iconText-logout`) }
@@ -88,19 +97,19 @@ const Layout = (props: { children: React.ReactFragment }) => {
       <MainNavigation />
       <Box
         sx={{
-          height: 330,
-          transform: "translateZ(0px)",
           flexGrow: 1,
         }}
       >
         <main>{props.children}</main>
+
         <SpeedDial
           ariaLabel="SpeedDial tooltip example"
-          sx={{
-            position: "absolute",
-            bottom: -200,
-            right: 17,
-          }}
+          // sx={{
+          //   position: "absolute",
+          //   bottom: -200,
+          //   right: 17,
+          // }}
+          style={style}
           icon={<SpeedDialIcon />}
           onClose={handleClose}
           onOpen={handleOpen}
