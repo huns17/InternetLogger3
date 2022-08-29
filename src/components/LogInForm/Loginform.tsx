@@ -20,31 +20,15 @@ const Login = () => {
     const a = logIn(idRef.current?.value!, pwRef.current?.value!);
     a.then((r) => {
       console.log(r);
-      if (
-        (r?.registered === true && r?.displayName === "Hans") ||
-        (r?.registered === true && r?.displayName === "Sarah")
-      ) {
+      if (r?.registered === true) {
         dispatch(usersActions.updateIdToken(r.idToken));
         dispatch(usersActions.updateIsLoggedIn(true));
         dispatch(usersActions.updateUser(r?.displayName));
         localStorage.setItem("token", r.idToken);
         localStorage.setItem("isLoggedIn", "true");
         localStorage.setItem("user", r?.displayName);
-        navigate("/hompageen");
-      } else if (
-        (r?.registered === true && r?.displayName === "성재") ||
-        (r?.registered === true && r?.displayName === "엄마") ||
-        (r?.registered === true && r?.displayName === "은지") ||
-        (r?.registered === true && r?.displayName === "아빠")
-      ) {
-        dispatch(usersActions.updateIdToken(r.idToken));
-        dispatch(usersActions.updateIsLoggedIn(true));
-        dispatch(usersActions.updateUser(r?.displayName));
-        localStorage.setItem("token", r.idToken);
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("user", r?.displayName);
-        navigate("/hompagekr");
-      } else if (r?.registered === true) {
+        navigate("/initialpage");
+      } else if (r?.registered !== true) {
         alert(t("Loginform.formHandler.alert"));
       }
     });

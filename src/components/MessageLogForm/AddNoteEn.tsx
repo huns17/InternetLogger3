@@ -1,6 +1,7 @@
 import { string } from "@inovua/reactdatagrid-community/filterTypes";
 import React, { useRef } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { useTranslation } from "react-i18next";
 import "./AddNote.css";
 
 type AddNoteENProps = {
@@ -21,6 +22,7 @@ function AddNoteEn(props: AddNoteENProps) {
   const textRef = useRef<HTMLTextAreaElement>(null);
   const now = new Date();
   const reduxUserInfo = useAppSelector((state) => state.user);
+  const { t } = useTranslation("main");
 
   function submitHandler(event: React.FormEvent) {
     if (titleRef.current?.value && textRef.current?.value) {
@@ -37,7 +39,7 @@ function AddNoteEn(props: AddNoteENProps) {
       titleRef.current!.value = "";
       textRef.current!.value = "";
     } else {
-      alert("Please input required fields.");
+      alert(t(`AddNoteEn.error`));
     }
   }
 
@@ -50,7 +52,7 @@ function AddNoteEn(props: AddNoteENProps) {
           id="title"
           ref={titleRef}
           style={{ color: "white" }}
-          placeholder="Log the title here..!"
+          placeholder={t(`AddNoteEn.titlePlaceHolder`)}
         />
       </div>
       <div className="control">
@@ -60,10 +62,10 @@ function AddNoteEn(props: AddNoteENProps) {
           id="text-log"
           ref={textRef}
           style={{ color: "white" }}
-          placeholder="Log the past event that you want to mention.."
+          placeholder={t(`AddNoteEn.bodyPlaceHolder`)}
         ></textarea>
       </div>
-      <button>Submit</button>
+      <button>{t(`SignInForm.button-submit`)}</button>
     </form>
   );
 }

@@ -16,6 +16,7 @@ import { usersActions } from "../../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import DialogUndoingBox from "./DialogUndoingBox";
+import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 
 const Layout = (props: { children: React.ReactFragment }) => {
   const [open, setOpen] = useState(false);
@@ -56,28 +57,16 @@ const Layout = (props: { children: React.ReactFragment }) => {
       ? { icon: <VpnKeyIcon />, name: t(`Layout.iconText-changepw`) }
       : null,
     reduxIsLoggedIn
-      ? reduxUser === "성재" ||
-        reduxUser === "엄마" ||
-        reduxUser === "아빠" ||
-        reduxUser === "은지"
-        ? { icon: <MessageIcon />, name: "메세지 로그" }
-        : { icon: <MessageIcon />, name: "Message Log" }
+      ? { icon: <MessageIcon />, name: t(`Loginform.input-messageLog`) }
       : null,
     reduxIsLoggedIn
-      ? reduxUser === "성재" ||
-        reduxUser === "엄마" ||
-        reduxUser === "아빠" ||
-        reduxUser === "은지"
-        ? { icon: <HomeIcon />, name: "홈" }
-        : { icon: <HomeIcon />, name: "Home" }
+      ? {
+          icon: <DriveFileRenameOutlineIcon />,
+          name: t(`Layout.iconText-changeNickname`),
+        }
       : null,
     reduxIsLoggedIn
-      ? reduxUser === "성재" ||
-        reduxUser === "엄마" ||
-        reduxUser === "아빠" ||
-        reduxUser === "은지"
-        ? null
-        : { icon: <DateRangeIcon />, name: "Undoing Box" }
+      ? { icon: <HomeIcon />, name: t(`Loginform.input-home`) }
       : null,
   ].filter(Boolean);
 
@@ -101,14 +90,8 @@ const Layout = (props: { children: React.ReactFragment }) => {
         }}
       >
         <main>{props.children}</main>
-
         <SpeedDial
           ariaLabel="SpeedDial tooltip example"
-          // sx={{
-          //   position: "absolute",
-          //   bottom: -200,
-          //   right: 17,
-          // }}
           style={style}
           icon={<SpeedDialIcon />}
           onClose={handleClose}
@@ -139,18 +122,20 @@ const Layout = (props: { children: React.ReactFragment }) => {
                   action?.name === "비밀번호 변경"
                 ) {
                   navigate("/changepassword");
-                } else if (action?.name === "Message Log") {
-                  navigate("/msglogen");
-                } else if (action?.name === "메세지 로그") {
-                  navigate("/msglogkr");
-                } else if (action?.name === "Home") {
-                  navigate("/hompageen");
-                } else if (action?.name === "홈") {
-                  navigate("/hompagekr");
-                } else if (action?.name === "메세지 로그") {
-                  navigate("/hompagekr");
+                } else if (
+                  action?.name === "Message Log" ||
+                  action?.name === "메세지 로그"
+                ) {
+                  navigate("/msglog");
+                } else if (action?.name === "Home" || action?.name === "홈") {
+                  navigate("/initialpage");
                 } else if (action?.name === "Undoing Box") {
                   dialogClickHandler();
+                } else if (
+                  action?.name === "닉네임 변경" ||
+                  action?.name === "Change Nickname"
+                ) {
+                  navigate("/updateusername");
                 }
                 handleClose();
               }}

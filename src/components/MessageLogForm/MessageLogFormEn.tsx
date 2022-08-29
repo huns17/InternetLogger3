@@ -3,7 +3,9 @@ import AddNoteEn from "./AddNoteEn";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
 import { usersActions } from "../../store/userSlice";
+import { useTranslation } from "react-i18next";
 import NoteListEn from "./NoteListEn";
+
 const MessageLogFormEn = () => {
   const reduxUser: string = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
@@ -14,13 +16,14 @@ const MessageLogFormEn = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isbuttonPressed, setIsbuttonPressed] = useState<boolean>(false);
   let navigate = useNavigate();
+  const { t } = useTranslation("main");
 
   const fetchNoteHandlerEn = useCallback(async () => {
     setIsLoading(true);
     setError("");
     try {
       const response = await fetch(
-        "https://react-http-2887f-default-rtdb.firebaseio.com/notes.json"
+        "https://react-http-2887f-default-rtdb.firebaseio.com/notesen.json"
       );
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -35,7 +38,9 @@ const MessageLogFormEn = () => {
           id: key,
           title: data[key].title,
           text: data[key].text,
-          date: `${data[key].logger} logged message at ${data[key].date}....`,
+          date: `${data[key].logger}  ${t(`MessageLogFormEn.logMessage`)} ${
+            data[key].date
+          }....`,
         });
       }
       loadedNotes.reverse();
@@ -56,7 +61,7 @@ const MessageLogFormEn = () => {
     date?: string;
   }) {
     const response = await fetch(
-      "https://react-http-2887f-default-rtdb.firebaseio.com/notes.json",
+      "https://react-http-2887f-default-rtdb.firebaseio.com/notesen.json",
       {
         method: "POST",
         body: JSON.stringify(note),
@@ -67,7 +72,7 @@ const MessageLogFormEn = () => {
     );
     const data = await response.json();
     console.log(data);
-    alert(`Message is successfully added..!`);
+    alert(t(`MessageLogFormEn.alert`));
     fetchNoteHandlerEn();
   }
 
@@ -75,7 +80,9 @@ const MessageLogFormEn = () => {
     fetchNoteHandlerEn();
   }, [fetchNoteHandlerEn]);
 
-  let content = <p style={{ color: "white" }}>Found no Notes.</p>;
+  let content = (
+    <p style={{ color: "white" }}>{t(`MessageLogFormEn.alert2`)}</p>
+  );
 
   if (note.length > 0) {
     content = <NoteListEn note={note} />;
@@ -92,20 +99,24 @@ const MessageLogFormEn = () => {
   return (
     <div>
       <section>
-        <h3 style={{ color: "white" }}>Welcome..! {reduxUser} </h3>
-        <button onClick={fetchNoteHandlerEn}>Update Notes</button>
+        <h3 style={{ color: "white" }}>
+          {t(`MessageLogFormEn.headerText`)} {reduxUser}{" "}
+        </h3>
+        <button onClick={fetchNoteHandlerEn}>
+          {t(`MessageLogFormEn.button-update`)}
+        </button>
         <button
           onClick={() => {
             setIsbuttonPressed(true);
           }}
           style={{ marginLeft: "20px" }}
         >
-          Write Log
+          {t(`MessageLogFormEn.button-wrtie`)}
         </button>
       </section>
       {isbuttonPressed && (
         <section>
-          <h3 style={{ color: "white" }}>Log Format</h3>
+          <h3 style={{ color: "white" }}>{t(`MessageLogFormEn.logText`)}</h3>
           <AddNoteEn
             AddNote={addNoteHandlerEn}
             logger={reduxUser}

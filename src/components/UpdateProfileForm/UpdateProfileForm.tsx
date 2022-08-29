@@ -7,12 +7,14 @@ import { logIn } from "../../Service/ApiService";
 import { useNavigate } from "react-router-dom";
 import { usersActions } from "../../store/userSlice";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { useTranslation } from "react-i18next";
 
 const UpdateProfileForm = () => {
   const userRef = useRef<HTMLInputElement>(null);
   let navigate = useNavigate();
   const reduxidToken = useAppSelector((state) => state.idToken);
   const reduxLan = useAppSelector((state) => state.lan);
+  const { t } = useTranslation("main");
 
   const formHandler = async () => {
     console.log(userRef.current?.value);
@@ -34,15 +36,12 @@ const UpdateProfileForm = () => {
       );
       if (!data.ok) {
         console.log(data);
-        let errorMessage =
-          reduxLan === "한국어"
-            ? "사용자 이름 변경에 실패하였습니다."
-            : "Failed to change user name.";
+        let errorMessage = t(`UpdateProfileForm.error`);
         throw new Error(errorMessage);
       }
       const json = await data.json();
       console.log(json);
-      alert("성공하였습니다.");
+      alert(t(`UpdateProfileForm.alert`));
     } catch (err) {
       alert(err);
     }
@@ -52,10 +51,7 @@ const UpdateProfileForm = () => {
   return (
     <section>
       <Typography variant="h6" color="white">
-        변경할 사용자 이름을 입력해 주세요.
-        {reduxLan === "한국어"
-          ? "변경할 사용자 이름을 입력해 주세요."
-          : "Input the username that you want to change."}
+        {t(`UpdateProfileForm.header`)}
       </Typography>
       <Divider sx={{ backgroundColor: "white", marginTop: "10px" }} />
       <Grid container spacing={4} style={{ marginTop: "10px" }}>
@@ -83,7 +79,7 @@ const UpdateProfileForm = () => {
             inputRef={userRef}
           />
           <button style={{ marginTop: "30px" }} onClick={formHandler}>
-            Submit
+            {t(`SignInForm.button-submit`)}
           </button>
         </Grid>
       </Grid>

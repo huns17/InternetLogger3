@@ -4,11 +4,8 @@ import "./App.css";
 import Login from "./pages/Login";
 import Layout from "./components/Layout/Layout";
 import MessageLogEn from "./pages/MessageLogEn";
-import MessageLogKr from "./pages/MessageLogKr";
 import SignIn from "./pages/SignIn";
 import ChangePassword from "./pages/ChangePassword";
-import HomePageEn from "./pages/HomePageEn";
-import HomePageKr from "./pages/HomePageKr";
 import ChangeUserName from "./pages/ChangeUserName";
 import InitialPage from "./pages/InitialPage";
 // import { useSelector, useDispatch } from "react-redux";
@@ -33,30 +30,6 @@ function App() {
     }
   }, [storedToken, storedIsLoggedIn, storedUser, dispatch]);
 
-  const isMsgEn = () => {
-    if (
-      (reduxIsLoggedIn && reduxUser === "Sarah") ||
-      (reduxIsLoggedIn && reduxUser === "Hans")
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  const isMsgKr = () => {
-    if (
-      (reduxIsLoggedIn && reduxUser === "은지") ||
-      (reduxIsLoggedIn && reduxUser === "엄마") ||
-      (reduxIsLoggedIn && reduxUser === "아빠") ||
-      (reduxIsLoggedIn && reduxUser === "성재")
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
   return (
     <>
       <CssBaseline />
@@ -76,18 +49,10 @@ function App() {
           {!reduxIsLoggedIn && (
             <Route path="/signin" element={<SignIn></SignIn>} />
           )}
-          {isMsgEn() && (
-            <Route path="/msglogen" element={<MessageLogEn></MessageLogEn>} />
+          {reduxIsLoggedIn && (
+            <Route path="/msglog" element={<MessageLogEn></MessageLogEn>} />
           )}
-          {isMsgKr() && (
-            <Route path="/msglogkr" element={<MessageLogKr></MessageLogKr>} />
-          )}
-          {isMsgEn() && (
-            <Route path="/hompageen" element={<HomePageEn></HomePageEn>} />
-          )}
-          {isMsgKr() && (
-            <Route path="/hompagekr" element={<HomePageKr></HomePageKr>} />
-          )}
+
           {reduxIsLoggedIn && (
             <Route
               path="/updateusername"
