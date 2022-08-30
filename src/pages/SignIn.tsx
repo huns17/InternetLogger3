@@ -1,5 +1,5 @@
 import React from "react";
-import SignInform from "../components/SingInForm/SignInForm";
+import SignInform from "../components/SignInForm/SignInForm";
 function SignIn() {
   return <SignInform />;
 }
