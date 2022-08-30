@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/InternetLogger3/static/css/main.c633f605.chunk.css",
-    "main.js": "/InternetLogger3/static/js/main.0bba85f7.chunk.js",
-    "main.js.map": "/InternetLogger3/static/js/main.0bba85f7.chunk.js.map",
+    "main.js": "/InternetLogger3/static/js/main.d113cc53.chunk.js",
+    "main.js.map": "/InternetLogger3/static/js/main.d113cc53.chunk.js.map",
     "runtime-main.js": "/InternetLogger3/static/js/runtime-main.0f8119c5.js",
     "runtime-main.js.map": "/InternetLogger3/static/js/runtime-main.0f8119c5.js.map",
     "static/js/2.5a72f3b8.chunk.js": "/InternetLogger3/static/js/2.5a72f3b8.chunk.js",
     "static/js/2.5a72f3b8.chunk.js.map": "/InternetLogger3/static/js/2.5a72f3b8.chunk.js.map",
     "index.html": "/InternetLogger3/index.html",
-    "precache-manifest.8a9333f91c753018dd5f8e7a0c367405.js": "/InternetLogger3/precache-manifest.8a9333f91c753018dd5f8e7a0c367405.js",
+    "precache-manifest.4de453fcf482cb9646b18013039338e6.js": "/InternetLogger3/precache-manifest.4de453fcf482cb9646b18013039338e6.js",
     "service-worker.js": "/InternetLogger3/service-worker.js",
     "static/css/main.c633f605.chunk.css.map": "/InternetLogger3/static/css/main.c633f605.chunk.css.map",
     "static/js/2.5a72f3b8.chunk.js.LICENSE.txt": "/InternetLogger3/static/js/2.5a72f3b8.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0f8119c5.js",
     "static/js/2.5a72f3b8.chunk.js",
     "static/css/main.c633f605.chunk.css",
-    "static/js/main.0bba85f7.chunk.js"
+    "static/js/main.d113cc53.chunk.js"
   ]
 }
