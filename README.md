@@ -1,4 +1,4 @@
-# InternetLogger3
+# React/Typescript + firebase Auth + Mui 5
 
 ## Toy Project with React with typescript
 You can try demo in [here](https://hohuns.github.io/InternetLogger3/)
